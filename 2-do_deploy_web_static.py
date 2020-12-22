@@ -2,9 +2,23 @@
 """Fabric script"""
 from fabric.api import put, run, env
 from os.path import exists
+from fabric.api import local
+from datetime import datetime
 import os
 env.user = 'ubuntu'
 env.hosts = ['35.196.95.205', '34.73.121.54']
+
+
+def do_pack():
+    """Return the archive path if the archive has been correctly generated.
+    Otherwise, it should return None"""
+    local("mkdir -p versions")
+    try:
+        result = local("tar -czvf versions/web_static_{}.tgz web_static"
+                       .format(datetime.now().strftime("%Y%m%d%H%M%S")))
+        return result
+    except Exception:
+        return None
 
 
 def do_deploy(archive_path):
