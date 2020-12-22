@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Fabric script"""
 from fabric.api import put, run, env
+from fabric.contrib import files
 from os.path import exists
 import os
 env.user = 'ubuntu'
