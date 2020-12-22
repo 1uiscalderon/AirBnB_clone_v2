@@ -9,7 +9,7 @@ env.hosts = ['35.196.95.205', '34.73.121.54']
 
 def do_deploy(archive_path):
     """Deploy new static content"""
-    if not os.path.isfile(archive_path):
+    if not os.path.exists(archive_path):
         return False
     try:
         upload = put(archive_path, "/tmp/")
@@ -24,6 +24,6 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s /data/web_static/releases/{} "
             "/data/web_static/current".format(name))
-        return True
     except Exception:
         return False
+    return True
