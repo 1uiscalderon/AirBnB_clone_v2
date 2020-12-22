@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 def do_pack():
-    """Return the archive path if the archive has been correctly generated. 
+    """Return the archive path if the archive has been correctly generated.
     Otherwise, it should return None"""
     local("mkdir -p versions")
     try:
