@@ -12,11 +12,12 @@ env.hosts = ['35.196.95.205', '34.73.121.54']
 def do_pack():
     """Return the archive path if the archive has been correctly generated.
     Otherwise, it should return None"""
-    local("mkdir -p versions")
     try:
-        result = local("tar -czvf versions/web_static_{}.tgz web_static"
-                       .format(datetime.now().strftime("%Y%m%d%H%M%S")))
-        return result
+        local("mkdir -p versions")
+        date = datetime.now().strftime('%Y%m%d%H%M%S')
+        compressed_file = "versions/web_static_{}.tgz".format(date)
+        local("tar -czvf {} web_static".format(compressed_file))
+        return compressed_file
     except Exception:
         return None
 
@@ -47,6 +48,6 @@ def deploy():
     """Creates and distributes an archive to your web servers, using the
     function deploy"""
     archive_path = do_pack()
-    if path is None:
+    if archive_path is None:
         return False
     return do_deploy(archive_path)
