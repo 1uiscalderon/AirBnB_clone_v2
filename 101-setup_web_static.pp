@@ -1,5 +1,4 @@
 # Configure an Nginx server using Puppet instead of Bash
-
 Package { 'nginx':
   ensure => installed,
 }
