@@ -1,11 +1,10 @@
 # Configure an Nginx server using Puppet instead of Bash
 
-package { 'nginx':
+Package { 'nginx':
   ensure => installed,
 }
 exec { 'configuration':
-  command  => '
-  mkdir -p /data/web_static/releases/test
+  command  => 'mkdir -p /data/web_static/releases/test
   mkdir -p /data/web_static/shared
   echo "Testing" > /data/web_static/releases/test/index.html
   ln -sf /data/web_static/releases/test /data/web_static/current
