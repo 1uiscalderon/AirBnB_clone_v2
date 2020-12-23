@@ -3,7 +3,7 @@
 Package { 'nginx':
   ensure => installed,
 }
-exec { 'creating directories':
+exec { 'configuration':
   command  => '
   mkdir -p /data/web_static/releases/test
   mkdir -p /data/web_static/shared
