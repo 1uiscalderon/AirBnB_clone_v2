@@ -3,7 +3,7 @@
 package { 'nginx':
   ensure => installed,
 }
-exec {
+exec { 'Setup':
   command  => 'sudo mkdir -p /date/web_static/releases/test
   sudo mkdir -p /data/web_static/shared
   sudo echo "Testing" | sudo tee /data/web_static/releases/test/index.html
