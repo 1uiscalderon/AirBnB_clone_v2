@@ -1,5 +1,5 @@
-# Configure an Nginx server using Puppet instead of Bash
-Package { 'nginx':
+# Sets up your web servers for the deployment of web_static
+package { 'nginx':
   ensure => installed,
 }
 exec { 'configuration':
